@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { A, NINE, SPACE, Z, ZERO } from '@angular/cdk/keycodes';
 import { debounceTime, Subscription, take, timer } from 'rxjs';
 
@@ -41,11 +41,11 @@ export class MatSelectFilterComponent implements OnInit, OnDestroy {
   
   public filteredItems: any[] = [];
   
-  public searchForm: FormGroup = this.fb.group({
+  public searchForm: UntypedFormGroup = this.fb.group({
     value: ''
   });
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: UntypedFormBuilder) {
   }
   
   ngOnInit(): void {
