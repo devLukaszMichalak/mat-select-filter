@@ -1,0 +1,34 @@
+{
+  "name": "@devlukaszmichalak/mat-select-filter",
+  "version": "13.0.0",
+  "description": "A filter for mat-select",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devLukaszMichalak/mat-select-filter.git"
+  },
+  "keywords": [
+    "Angular",
+    "Material",
+    "Angular Material",
+    "mat-select-filter",
+    "mat-select",
+    "filtering",
+    "dropdown",
+    "angular"
+  ],
+  "license": "MIT",
+  "author": "Max Livingston",
+  "peerDependencies": {
+    "@angular/common": "^13",
+    "@angular/core": "^13",
+    "@angular/material": "^13"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/devLukaszMichalak/mat-select-filter/issues"
+  },
+  "homepage": "https://github.com/devLukaszMichalak/mat-select-filter#readme",
+  "sideEffects": false
+}
