@@ -26,7 +26,7 @@ https://stackblitz.com/edit/mat-select-filter
 #### npm
 
 ```shell
-$ npm install mat-select-filter
+$ npm install @devlukaszmichalak/mat-select-filter
 ```
 
 ## How to use
@@ -34,7 +34,7 @@ $ npm install mat-select-filter
 Be sure to import into desired module:
 
 ```ts
-import { MatSelectFilterModule } from 'mat-select-filter';
+import { MatSelectFilterModule } from '@devlukaszmichalak/mat-select-filter';
 ```
 
 Next, add it to the desired material select:
