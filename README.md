@@ -29,15 +29,49 @@ https://stackblitz.com/edit/mat-select-filter
 $ npm install @devlukaszmichalak/mat-select-filter
 ```
 
-## How to use
+## How to set up
 
-Be sure to import into desired module:
+### NgModule
+
+In module based app import the MatSelectFilterModule
 
 ```ts
 import { MatSelectFilterModule } from '@devlukaszmichalak/mat-select-filter';
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    MatSelectFilterModule
+  ],
+  ...
+})
+export class AppModule {
+}
 ```
 
-Next, add it to the desired material select:
+### Standalone (since library version 17.1.0)
+In standalone components import the MatSelectFilterComponent in the imports array
+```ts
+import { MatSelectFilterComponent } from '@devlukaszmichalak/mat-select-filter';
+
+
+@Component({
+  ...
+    standalone: true,
+  imports: [
+  ...
+    MatSelectFilterComponent,
+  ...
+],
+...
+})
+export class Component {
+```
+
+## How to use
+
+Add component to the desired material select:
 
 ```angular17html
 <mat-form-field>
