@@ -4,7 +4,7 @@
     <mat-select>
         <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
         <mat-option *ngFor="let variable of filteredVariables" [value]="variable">
-            {{variable}}
+            {{ variable }}
         </mat-option>
     </mat-select>
 </mat-form-field>

@@ -21,7 +21,6 @@ import { MatInputModule } from '@angular/material/input';
           </div>
       </form>
   `,
-  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
