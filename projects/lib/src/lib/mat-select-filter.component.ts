@@ -10,17 +10,21 @@ import { MatInputModule } from '@angular/material/input';
   selector: 'mat-select-filter',
   template: `
       <form [formGroup]="searchForm" class="mat-filter" [ngStyle]="{'background-color': color ? color : 'white'}">
-          <div>
-              <input #input class="mat-filter-input" matInput placeholder="{{placeholder}}" formControlName="value"
-                     (keydown)="handleKeydown($event)">
-              <mat-spinner *ngIf="localSpinner && showSpinner" class="spinner" diameter="16"></mat-spinner>
+        <div>
+          <input #input class="mat-filter-input" matInput placeholder="{{placeholder}}" formControlName="value"
+            (keydown)="handleKeydown($event)">
+            @if (localSpinner && showSpinner) {
+              <mat-spinner class="spinner" diameter="16"></mat-spinner>
+            }
           </div>
-          <div *ngIf="noResults"
-               class="noResultsMessage">
+          @if (noResults) {
+            <div
+              class="noResultsMessage">
               {{ noResultsMessage }}
-          </div>
-      </form>
-  `,
+            </div>
+          }
+        </form>
+      `,
   imports: [
     CommonModule,
     FormsModule,

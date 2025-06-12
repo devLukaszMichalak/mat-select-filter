@@ -1,6 +1,6 @@
 {
   "name": "@devlukaszmichalak/mat-select-filter",
-  "version": "19.0.0",
+  "version": "20.0.0",
   "description": "A filter for mat-select",
   "repository": {
     "type": "git",
@@ -18,10 +18,11 @@
   ],
   "license": "MIT",
   "author": "Max Livingston",
+  "contributors": ["Łukasz Michalak"],
   "peerDependencies": {
-    "@angular/common": "^19",
-    "@angular/core": "^19",
-    "@angular/material": "^19"
+    "@angular/common": "^20",
+    "@angular/core": "^20",
+    "@angular/material": "^20"
   },
   "dependencies": {
     "tslib": "^2.3.0"
