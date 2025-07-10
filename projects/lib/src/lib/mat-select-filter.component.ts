@@ -1,6 +1,6 @@
 import {Component, DestroyRef, ElementRef, inject, input, OnInit, output, signal, viewChild} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {debounceTime, finalize, map, takeUntil, tap, timer} from 'rxjs';
+import {debounceTime, finalize, fromEvent, map, merge, takeUntil, tap, throttleTime, timer} from 'rxjs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CommonModule} from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
@@ -40,6 +40,8 @@ export class MatSelectFilterComponent<T = any> implements OnInit {
     readonly noResults = signal(false);
     readonly localSpinner = signal(false);
 
+    #shouldFocus = signal(true);
+
     filteredItems: T[] = [];
 
     searchForm = this.#fb.group({
@@ -47,8 +49,33 @@ export class MatSelectFilterComponent<T = any> implements OnInit {
     });
 
     ngOnInit(): void {
-        timer(500)
-            .subscribe(() => this.input()?.nativeElement.focus());
+        // since the component is not destroyed, we want to reset the filter
+        // when no options would show and mat-select-filter is not visible
+        // this also sets item to be focused on the next time it will be opened
+        merge(
+            fromEvent(document, 'scroll'),
+            fromEvent(document, 'keyup'),
+            fromEvent(document, 'mousemove'),
+            fromEvent(document, 'click')
+        ).pipe(
+            throttleTime(100),
+            takeUntilDestroyed(this.#destroyRef),
+        ).subscribe(() => {
+            const filters = document.querySelectorAll('mat-select-filter');
+            if (filters.length === 0) {
+                this.#shouldFocus.set(true)
+
+                if (this.filteredItems.length === 0) {
+                    this.searchForm.controls.filterValue.setValue('')
+                    this.filteredReturn.emit(this.array())
+                }
+            }
+
+            if (filters.length > 0 && this.#shouldFocus()) {
+                this.input()?.nativeElement.focus()
+                this.#shouldFocus.set(false)
+            }
+        })
 
         this.searchForm.valueChanges
             .pipe(

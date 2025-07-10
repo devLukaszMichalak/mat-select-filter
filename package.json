@@ -5,7 +5,8 @@
     "ng": "ng",
     "start-example": "ng serve example",
     "start-example-standalone": "ng serve example-standalone",
-    "build-lib": "ng build lib"
+    "build-lib": "ng build lib",
+    "build-lib-watch": "ng build lib --watch"
   },
   "private": true,
   "dependencies": {
