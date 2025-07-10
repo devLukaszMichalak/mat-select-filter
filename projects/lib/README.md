@@ -1,155 +1,215 @@
-## IMPORTANT
-### This is a fork that will bring the library up to the latest angular version.
-The versioning of this fork follows the angular versions,
-so for example, for any angular 13.x.x project use library version 13.x.x
-
-
-https://github.com/devLukaszMichalak/mat-select-filter
-
 # mat-select-filter
 
-## Original Github
+> **Note:** This is a fork of the original library that maintains compatibility with the latest Angular versions.
+> The versioning follows Angular's versioning scheme (e.g., use library version 13.x.x for Angular 13.x.x projects).
+> - Repository: [https://github.com/devLukaszMichalak/mat-select-filter](https://github.com/devLukaszMichalak/mat-select-filter)
+> - Original repository: [https://github.com/mdlivingston/mat-select-filter](https://github.com/mdlivingston/mat-select-filter)
 
-https://github.com/mdlivingston/mat-select-filter
+A filter component for Angular Material `<mat-select>` drop-downs.
+Supports filtering arrays of strings or objects, option groups, and is compatible with both NgModule and standalone
+component usage.
 
-## Description
-
-The mat-select-filter is a filterer for the material select drop-downs.
-They currently do not support this, so I decided to make my own.
+---
 
 ## Demo
 
-https://stackblitz.com/edit/mat-select-filter
+[StackBlitz Demo](https://stackblitz.com/edit/mat-select-filter)
 
-## Install
+---
 
-#### npm
+## Installation
 
-```shell
-$ npm install @devlukaszmichalak/mat-select-filter
+```sh
+npm install @devlukaszmichalak/mat-select-filter
 ```
 
-## How to set up
+---
+
+## Usage
 
 ### NgModule
 
-In module based app import the MatSelectFilterModule
+In module-based app import the MatSelectFilterModule
 
 ```ts
-import { MatSelectFilterModule } from '@devlukaszmichalak/mat-select-filter';
+import {MatSelectFilterModule} from '@devlukaszmichalak/mat-select-filter';
 
 @NgModule({
-  ...
-  imports: [
     ...
-    MatSelectFilterModule
-  ],
-  ...
+        imports:
+[
+    ...
+        MatSelectFilterModule
+],
+...
 })
+
 export class AppModule {
 }
 ```
 
-### Standalone (since library version 17.1.0)
-In standalone components import the MatSelectFilterComponent in the imports array
-```ts
-import { MatSelectFilterComponent } from '@devlukaszmichalak/mat-select-filter';
+### Standalone Component (since library version 17.1.0)
 
+In standalone components import the MatSelectFilterComponent in the component's 'imports' array
+
+```ts
+import {MatSelectFilterComponent} from '@devlukaszmichalak/mat-select-filter';
 
 @Component({
-  ...
-  standalone: true,
-  imports: [
     ...
-    MatSelectFilterComponent,
+        standalone:
+true,
+    imports
+:
+[
     ...
-  ],
-  ...
+        MatSelectFilterComponent,
+    ...
+],
+...
 })
+
 export class Component {
 ```
 
-## How to use
+---
 
-Add component to the desired material select:
+## Basic Example
 
-```angular17html
+```angular2html
+
 <mat-form-field>
     <mat-select>
         <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
         <mat-option *ngFor="let variable of filteredVariables">
-            {{variable}}
+            {{ variable }}
         </mat-option>
     </mat-select>
 </mat-form-field>
 ```
 
-Send your desired filtered array using the [array]="variables" or [array]="['one', 'two', 'three']".
-It now accepts an array objects thanks to Sen Alexandru.
-To use an array of objects, specify the objects key value you want to filter using the [displayMember] input.
-For example:
+or using new control flow syntax
 
-```ts
-var variables = [
-  {
-    id: 0,
-    name: 'test1'
-  },
-  {
-    id: 0,
-    name: 'test1'
-  }
-]
-```
+```angular181html
 
-```angular17html
 <mat-form-field>
     <mat-select>
-        <mat-select-filter [array]="variables" [displayMember]="'name'" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
-        <mat-option *ngFor="let variable of filteredVariables">
-            {{variable}}
-        </mat-option>
+        <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
+        @for (variable of filteredVariables; track variable) {
+            <mat-option>
+                {{ variable }}
+            </mat-option>
+        }
     </mat-select>
 </mat-form-field>
 ```
+
+---
+
+## Filtering Objects
+
+Bind a filtered array with `[array]` .
+It now accepts an array objects thanks to Sen Alexandru.
+If your array contains objects, specify the property to filter with `[displayMember]`:
+
+```ts
+variables = [
+    {id: 1, name: 'Alpha'},
+    {id: 2, name: 'Beta'}
+];
+```
+
+```angular181html
+<mat-form-field>
+    <mat-select>
+        <mat-select-filter [array]="variables"
+                           [displayMember]="'name'"
+                           (filteredReturn)="filteredVariables = $event"></mat-select-filter>
+        @for (variable of filteredVariables; track variable) {
+            <mat-option>
+                {{ variable }}
+            </mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+```
+
+## Option Groups
+
 mat-select-filter now supports option group support thanks to jenniferarce! Just input the [hasGroup] boolean to true and add you [groupArrayName] string!
 
-The (filteredReturn) method returns the filtered results after every keyboard action while searching...
+To filter grouped options, use additionally `[hasGroup]` and `[groupArrayName]`:
 
-The [noResultsMessage] is the string you would like to display when you filter no results.
-
-The [showSpinner] allows you to turn off whether you would like to show a loading spinner while filtering.
-
-The [filterDebounceTime] allows you to set the debounceTime value on a filter input. Default is 0.
-
-The placeholder text for the search box is accessed by [placeholder]. Default is 'Search...';
-
-```
-<mat-select-filter [placeholder]="'Search..'" [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
+```angular181html
+<mat-select-filter
+        [array]="groups"
+        [hasGroup]="true"
+        [groupArrayName]="'options'"
+        [displayMember]="'name'"
+        (filteredReturn)="filteredGroups = $event">
+</mat-select-filter>
 ```
 
-To focus the search input on every click, you can do something like this:
+---
 
-```angular17html
-<mat-form-field>
-    <mat-select #select [value]="selectedVariableName" placeholder="{{ placeholder }}">
-        <mat-select-filter *ngIf="select.focused" [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
-        <mat-option *ngFor="let variable of filteredVariables">
-            {{variable}}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
+## Inputs
+
+| Input                | Type    | Default      | Description                                               |
+|----------------------|---------|--------------|-----------------------------------------------------------|
+| `array`              | any[]   | —            | Array to filter (required).                               |
+| `placeholder`        | string  | 'Search...'  | Placeholder text for the search input.                    |
+| `color`              | string  | 'white'      | Background color for the filter bar.                      |
+| `displayMember`      | string  | —            | Property name to filter/display (for array of objects).   |
+| `showSpinner`        | boolean | true         | Show a spinner while filtering.                           |
+| `noResultsMessage`   | string  | 'No results' | Message to display when no results are found.             |
+| `hasGroup`           | any     | —            | Enable option group filtering (set to truthy value).      |
+| `groupArrayName`     | string  | —            | Property name for the group array (used with `hasGroup`). |
+| `filterDebounceTime` | number  | 0            | Debounce time (ms) for the filter input.                  |
+
+---
+
+## Output
+
+| Output           | Description                                        |
+|------------------|----------------------------------------------------|
+| `filteredReturn` | Emits the filtered array after each filter action. |
+
+---
+
+## Features
+
+- Works with arrays of strings or objects
+- Option group support
+- Customizable placeholder, color, spinner, and no-results message
+- Debounced filtering
+- Focuses the input on open
+- Prevents propagation of alphanumeric key events to avoid selection issues
+
+---
+
+## Custom Styling
+
+You can override styles using the following CSS classes in a global css/scss file:
+
+```scss
+.mat-filter {
+  // Styles the filter bar
+}
+
+.mat-filter-input {
+  // Styles the input field
+}
+
+.spinner {
+  // Styles the spinner
+}
+
+.no-results-message {
+  // Styles the no-results message
+}
 ```
 
-otherwise, it will only focus once.
-
-To add a colored background, do something like this:
-
-```angular17html
- <mat-select-filter [color]="'purple'" [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
-```
-
-You can also change the classes from a global css/scss file in your project by adding:
+Example:
 
 ```scss
 .mat-filter {
@@ -157,21 +217,10 @@ You can also change the classes from a global css/scss file in your project by a
 }
 
 .mat-filter-input {
-  border: 1px solid black !important
+  border: 1px solid black !important;
 }
 ```
-## Options
 
-* [array]
-* [color]
-* [placeholder]
-* [displayMember]
-* [noResultsMessage]
-* [showSpinner]
-* [hasGroup]
-* [groupArrayName]
-* [showSpinner]
-* [filterDebounceTime]
-* (filteredReturn)
+## License
 
-Hope you enjoy!
+MIT

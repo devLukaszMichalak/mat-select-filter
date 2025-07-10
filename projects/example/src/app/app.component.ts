@@ -10,6 +10,4 @@ export class AppComponent {
   
   variables: string[] = ['volvo', 'saab', 'mercedes', 'audi'];
   filteredVariables: string[] = this.variables;
-  
-  picked: any;
 }

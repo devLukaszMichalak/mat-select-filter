@@ -1,0 +1,19 @@
+<form [formGroup]="searchForm" class="mat-filter"
+      [ngStyle]="{'background-color': color()}">
+    <div>
+        <input #input
+               class="mat-filter-input"
+               matInput
+               placeholder="{{placeholder()}}"
+               formControlName="filterValue"
+               (keydown)="handleKeydown($event)">
+        @if (localSpinner() && showSpinner()) {
+            <mat-spinner class="spinner" diameter="16"></mat-spinner>
+        }
+    </div>
+    @if (noResults()) {
+        <div class="noResultsMessage no-results-message">
+            {{ noResultsMessage() }}
+        </div>
+    }
+</form>
