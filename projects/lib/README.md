@@ -9,21 +9,15 @@ A filter component for Angular Material `<mat-select>` drop-downs.
 Supports filtering arrays of strings or objects, option groups, and is compatible with both NgModule and standalone
 component usage.
 
----
-
 ## Demo
 
 [StackBlitz Demo](https://stackblitz.com/edit/mat-select-filter)
-
----
 
 ## Installation
 
 ```sh
 npm install @devlukaszmichalak/mat-select-filter
 ```
-
----
 
 ## Usage
 
@@ -36,16 +30,11 @@ import {MatSelectFilterModule} from '@devlukaszmichalak/mat-select-filter';
 
 @NgModule({
     ...
-        imports:
-[
+    imports: [MatSelectFilterModule],
     ...
-        MatSelectFilterModule
-],
-...
 })
 
-export class AppModule {
-}
+export class AppModule { ... }
 ```
 
 ### Standalone Component (since library version 17.1.0)
@@ -57,22 +46,13 @@ import {MatSelectFilterComponent} from '@devlukaszmichalak/mat-select-filter';
 
 @Component({
     ...
-        standalone:
-true,
-    imports
-:
-[
+    standalone: true, // this flag is ommited in newer angular versions 
+    imports: [MatSelectFilterComponent],
     ...
-        MatSelectFilterComponent,
-    ...
-],
-...
 })
 
-export class Component {
+export class Component { ... }
 ```
-
----
 
 ## Basic Example
 
@@ -103,8 +83,6 @@ or using new control flow syntax
     </mat-select>
 </mat-form-field>
 ```
-
----
 
 ## Filtering Objects
 
@@ -150,8 +128,6 @@ To filter grouped options, use additionally `[hasGroup]` and `[groupArrayName]`:
 </mat-select-filter>
 ```
 
----
-
 ## Inputs
 
 | Input                | Type    | Default      | Description                                               |
@@ -166,15 +142,11 @@ To filter grouped options, use additionally `[hasGroup]` and `[groupArrayName]`:
 | `groupArrayName`     | string  | —            | Property name for the group array (used with `hasGroup`). |
 | `filterDebounceTime` | number  | 0            | Debounce time (ms) for the filter input.                  |
 
----
-
 ## Output
 
 | Output           | Description                                        |
 |------------------|----------------------------------------------------|
 | `filteredReturn` | Emits the filtered array after each filter action. |
-
----
 
 ## Features
 
@@ -184,8 +156,6 @@ To filter grouped options, use additionally `[hasGroup]` and `[groupArrayName]`:
 - Debounced filtering
 - Focuses the input on open
 - Prevents propagation of alphanumeric key events to avoid selection issues
-
----
 
 ## Custom Styling
 

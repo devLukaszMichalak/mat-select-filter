@@ -30,7 +30,7 @@ import {MatSelectFilterModule} from '@devlukaszmichalak/mat-select-filter';
 
 @NgModule({
     ...
-    imports: [MatSelectFilterModule]
+    imports: [MatSelectFilterModule],
     ...
 })
 
@@ -47,7 +47,7 @@ import {MatSelectFilterComponent} from '@devlukaszmichalak/mat-select-filter';
 @Component({
     ...
     standalone: true, // this flag is ommited in newer angular versions 
-    imports: [MatSelectFilterComponent]
+    imports: [MatSelectFilterComponent],
     ...
 })
 
