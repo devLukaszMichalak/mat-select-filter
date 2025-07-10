@@ -57,7 +57,6 @@ export class Component { ... }
 ## Basic Example
 
 ```angular2html
-
 <mat-form-field>
     <mat-select>
         <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
@@ -71,7 +70,6 @@ export class Component { ... }
 or using new control flow syntax
 
 ```angular181html
-
 <mat-form-field>
     <mat-select>
         <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
