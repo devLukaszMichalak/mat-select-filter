@@ -1,6 +1,6 @@
 {
   "name": "@devlukaszmichalak/mat-select-filter",
-  "version": "20.1.1",
+  "version": "20.1.2",
   "scripts": {
     "ng": "ng",
     "start-example": "ng serve example",

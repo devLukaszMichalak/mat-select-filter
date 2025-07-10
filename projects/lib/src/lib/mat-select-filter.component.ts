@@ -74,8 +74,7 @@ export class MatSelectFilterComponent<T = any> implements OnInit {
                 this.filteredReturn.emit(this.filteredItems);
                 timer(2000)
                     .pipe(takeUntil(this.searchForm.valueChanges))
-                    .subscribe()
-                    .add(() => this.localSpinner.set(false));
+                    .subscribe(() => this.localSpinner.set(false))
             });
     }
 
