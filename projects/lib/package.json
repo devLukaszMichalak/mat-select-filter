@@ -1,6 +1,6 @@
 {
   "name": "@devlukaszmichalak/mat-select-filter",
-  "version": "20.1.2",
+  "version": "21.0.0",
   "description": "A filter for mat-select",
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "filtering",
     "dropdown",
     "angular",
+    "angular21",
     "angular20",
     "angular19",
     "angular18",
@@ -33,6 +34,7 @@
     "Angular",
     "Material",
     "Angular Material",
+    "Angular 21",
     "Angular 20",
     "Angular 19",
     "Angular 18",
@@ -41,6 +43,7 @@
     "Angular 15",
     "Angular 14",
     "Angular 13",
+    "ng21",
     "ng20",
     "ng19",
     "ng18",
@@ -49,6 +52,7 @@
     "ng15",
     "ng14",
     "ng13",
+    "21",
     "20",
     "19",
     "18",
@@ -64,9 +68,9 @@
     "Łukasz Michalak"
   ],
   "peerDependencies": {
-    "@angular/common": "^20",
-    "@angular/core": "^20",
-    "@angular/material": "^20"
+    "@angular/common": "^21",
+    "@angular/core": "^21",
+    "@angular/material": "^21"
   },
   "dependencies": {
     "tslib": "^2.3.0"
