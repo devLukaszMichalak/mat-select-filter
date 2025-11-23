@@ -31,5 +31,13 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "references": [
+    {
+      "path": "./projects/example-zoneless/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/example-zoneless/tsconfig.spec.json"
+    }
+  ]
 }

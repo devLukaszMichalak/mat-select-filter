@@ -5,6 +5,7 @@
     "ng": "ng",
     "start-example": "ng serve example",
     "start-example-standalone": "ng serve example-standalone",
+    "start-example-zoneless": "ng serve example-zoneless",
     "build-lib": "ng build lib",
     "build-lib-watch": "ng build lib --watch"
   },
@@ -31,12 +32,14 @@
     "@types/jasmine": "5.1.8",
     "@types/node": "^24.0.1",
     "jasmine-core": "5.8.0",
+    "jsdom": "^27.1.0",
     "karma": "6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^21.0.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.8"
   }
 }

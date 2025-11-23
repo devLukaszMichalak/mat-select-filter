@@ -1,0 +1,12 @@
+<h4>Basic zoneless select</h4>
+<mat-form-field appearance="fill">
+    <mat-label>Cars</mat-label>
+    <mat-select>
+        <mat-select-filter [array]="variables" (filteredReturn)="filteredVariables = $event"></mat-select-filter>
+        @for (variable of filteredVariables; track variable) {
+            <mat-option [value]="variable">
+                {{ variable }}
+            </mat-option>
+        }
+    </mat-select>
+</mat-form-field>
